@@ -1,0 +1,2 @@
+#THIS FILE IS GOING TO TAKE YOU THROUGH EVERYTHING THAT THIS DIRECTORY CONTAINS
+**Learn to follow the documentation of this files**
