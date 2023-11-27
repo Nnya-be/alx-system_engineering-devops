@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Printing infinity but with another flags.
-sig=0;
 
 trap 'echo "I am invincible!!!"' SIGTERM
-while [ true ]
+while true
 do
 	echo "To infinity and beyond"
 	sleep 2
