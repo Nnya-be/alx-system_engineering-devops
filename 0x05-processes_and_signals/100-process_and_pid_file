@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # A bash scripts That catch the sigterm and all the signals.
-
+File= "/var/run/myscript.pid"
 cleanup() {
 	  echo "Cleaning up and terminting script."
-	  rm -f "/var/run/myscript.pid"
-	  exit 0
+	  rm "$File"
+	  exit
 }
 
 terminate() {
@@ -15,12 +15,14 @@ terminate() {
 interrupt() {
 	    echo "Y U no love me?!"
 }
+if [ ! -e $File ]
+then
+    echo echo "$$" >> "$File"
+fi
 
 trap cleanup SIGTERM SIGQUIT
 trap terminate SIGTERM
 trap interrupt SIGINT
-
-echo "$$" >> "/var/run/myscript.pid"
 
 
 
