@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# A bash scripts That catch the sigterm and all the signals.
+
+cleanup() {
+	  echo "Cleaning up and terminting script."
+	  rm -f "/var/run/myscript.pid"
+	  exit 0
+}
+
+terminate() {
+	   echo "I hate the kill command"
+}
+
+interrupt() {
+	    echo "Y U no love me?!"
+}
+
+trap cleanup SIGTERM SIGQUIT
+trap terminate SIGTERM
+trap interrupt SIGINT
+
+echo $$ > "/var/run/myscript.pid"
+
+echo "To infinity and beyond!"
+
+while true
+do
+	sleep 2
+done
