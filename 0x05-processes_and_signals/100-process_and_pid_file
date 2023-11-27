@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # A bash scripts That catch the sigterm and all the signals.
-File= "/var/run/myscript.pid"
+File="/var/run/myscript.pid"
 
 if [ ! -e $File ]
 then
