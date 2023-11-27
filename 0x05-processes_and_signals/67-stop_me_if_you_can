@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Another method of killing programs.
+
+pkill -f 7-highlander
