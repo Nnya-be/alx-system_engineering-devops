@@ -20,11 +20,12 @@ trap cleanup SIGTERM SIGQUIT
 trap terminate SIGTERM
 trap interrupt SIGINT
 
-echo $$ > "/var/run/myscript.pid"
+echo "$$" >> "/var/run/myscript.pid"
 
-echo "To infinity and beyond!"
+
 
 while true
 do
-	sleep 2
+    echo "To infinity and beyond!"
+    sleep 2
 done
