@@ -8,8 +8,8 @@ then
     echo echo "$$" >> "$File"
 fi
 
-trap "echo 'I hate the kill command'; rm "$File"; exit" SIGTERM
-trap "rm $File; exit" SIGQUIT
+trap "echo 'I hate the kill command'; rm /var/run/myscript.pid; exit" SIGTERM
+trap "rm /var/run/myscript.pid; exit" SIGQUIT
 trap "echo 'Y U no love me?!'" SIGINT
 
 
