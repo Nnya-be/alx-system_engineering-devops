@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Install nginx server on the remote server.
+
+# Update the package list
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get install -y nginx
+
+# Create a basic HTML page
+echo "<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+</body>
+</html>" | sudo tee /var/www/html/index.html
+
+# Configure Nginx to listen on port 80
+sudo sed -i 's/^\(server {\)/\1\n    listen 80;/' /etc/nginx/sites-available/default
+
+# Restart Nginx
+sudo /etc/init.d/nginx restart
