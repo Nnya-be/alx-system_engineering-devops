@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#Install nginx and configure the default header with the X-served-By.
+
+sudo apt-get update -y
+sudo apt-get install nginx -y
+sudo service nginx start
+sudo chmod 644 /etc/nginx/sites-available/default
+sudo echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        location / {
+                add_header X-served-By $HOSTNAME;
+                try_files $uri $uri/ =404;
+        }
+}
+" > /etc/nginx/sites-available/default
+echo "Hello from the server" > /var/www/html/index.html
+sudo service nginx restart
