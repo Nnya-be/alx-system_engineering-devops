@@ -11,10 +11,10 @@ get_info() {
 
     for sub in $subdomain; do
         result=$(dig +short "$sub.$domain" | awk '{print $1}')
-        type=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION' | awk '{print $4}')
+        record_type=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION' | tr -d '\n' | awk '{print $6}')
 
         if [ -n "$result" ]; then
-            echo "The subdomain $sub is a $type record and points to $result"
+            echo "The subdomain $sub is a $record_type record and points to $result"
         fi
     done
 }
