@@ -9,11 +9,18 @@ apt-get -y install haproxy
 
 # edit config file
 server_config=\
-"
+	     "
+defaults
+	mode http
+	timeout client 15s
+	timeout connect 10s
+	timeout server 15s
+	timeout http-request 10s
+
 frontend  chamamme-frontend
         bind *:80
-        mode http
         default_backend chamamme-backend
+
 backend chamamme-backend
         balance roundrobin
         server 487279-web-01 100.26.216.148:80 check
