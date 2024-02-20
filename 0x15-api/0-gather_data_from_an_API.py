@@ -10,7 +10,7 @@ if __name__ == '__main__':
     tsk = requests.get(todos).json()
     uses = requests.get(user).json()
     tsk_t = [task['title'] for task in tsk if task.get('completed')]
-    m = f"Employee {uses['name']} is done with tasks ({len(tsk_t)}/{len(tsk)}:"
+    m = f"Employee {uses['name']} is done with tasks ({len(tsk_t)}/{len(tsk)}):"
     print(m)
     for title in tsk_t:
         print(f'\t{title}')
