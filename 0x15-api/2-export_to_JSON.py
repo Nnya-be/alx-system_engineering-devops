@@ -9,11 +9,10 @@ if __name__ == '__main__':
     userId = argv[1]
     user_url = f"https://jsonplaceholder.typicode.com/users/{userId}"
     task_url = f"https://jsonplaceholder.typicode.com/todos?userId={userId}"
-    # Fetch user and tasks
+
     user = requests.get(user_url).json()
     tsks = requests.get(task_url).json()
 
-    # Prepare JSON data
     json_data = {
         userId: [
             {"task": task['title'],
@@ -22,7 +21,7 @@ if __name__ == '__main__':
         ]
     }
 
-    # Write to JSON file
+
     json_file_path = f"{userId}.json"
     with open(json_file_path, 'w') as json_file:
         json.dump(json_data, json_file, indent=2)
