@@ -1,23 +1,24 @@
 #!/usr/bin/python3
-"""
-Retrieve user and corresponding done tasks, export data in JSON format
-"""
-
+"""Retrieve user and corresponding done tasks, export data in JSON format."""
 import requests
 from sys import argv
 import json
 
+
 if __name__ == '__main__':
     userId = argv[1]
-    
+    user_url = f"https://jsonplaceholder.typicode.com/users/{userId}"
+    task_url = f"https://jsonplaceholder.typicode.com/todos?userId={userId}"
     # Fetch user and tasks
-    user = requests.get(f"https://jsonplaceholder.typicode.com/users/{userId}").json()
-    tsks = requests.get(f"https://jsonplaceholder.typicode.com/todos?userId={userId}").json()
+    user = requests.get(user_url).json()
+    tsks = requests.get(task_url).json()
 
     # Prepare JSON data
     json_data = {
         userId: [
-            {"task": task['title'], "completed": task['completed'], "username": user['username']} for task in tsks
+            {"task": task['title'],
+             "completed": task['completed'],
+             "username": user['username']} for task in tsks
         ]
     }
 
