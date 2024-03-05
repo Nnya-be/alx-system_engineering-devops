@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Install and configure the firewall to block most traffic.
 
 sudo apt-get update
