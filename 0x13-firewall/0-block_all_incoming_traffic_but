@@ -1,11 +1,10 @@
 #!/bin/bash
-# Install and configure the firewall to block most traffic.
+#Configure firewall to only allow ssh, http and https
 
-sudo apt-get update
 sudo apt-get install ufw
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
-sudo ufw default 22/tcp
-sudo ufw default 80/tcp
-sudo ufw default 443/tcp
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 sudo ufw enable
